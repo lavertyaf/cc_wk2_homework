@@ -67,6 +67,9 @@ class RoomTest < MiniTest::Test
   @room1.add_song(@song2)
   @room1.add_song(@song3)
   @room1.add_song(@song4)
+  @room1.add_song(@song1)
+  @room1.add_song(@song4)
+  @room1.add_song(@song5)
   assert_equal(true, @room1.has_exceeded_time_limit?)
 
   end

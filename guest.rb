@@ -16,10 +16,22 @@ class Guest
 
   def can_afford_entry?(room)
     if @money >= room.fee
-      return true
+        return true
+      else
+        return false
     end
-  else
-    return false
   end
+
+  def fave_song_on_playlist(room)
+    for song in room.playlist
+      if song.title == @fave_song
+        return "Yay! My favourite song #{fave_song} is on here!"
+      else
+        return "Oh rats! My favourite song #{fave_song} isn't on this list!"
+      end
+    end
+  end
+
+
 
 end

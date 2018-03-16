@@ -20,7 +20,7 @@ class GuestTest < MiniTest::Test
     @customer2 = Guest.new("Claire", 33, "You make my dreams", 25)
     @customer3 = Guest.new("Andrea", 30, "Killin in the name", 20)
     @customer4 = Guest.new("Andy", 32, "Woodpile", 27)
-    @customer5 = Guest.new("Nicol", 34, "Back for good", 10)
+    @customer5 = Guest.new("Nicol", 34, "Back for Good", 10)
     @customer6 = Guest.new("Roz", 27, "Let's get ready to rumble!", 15)
   end
 
@@ -48,5 +48,19 @@ class GuestTest < MiniTest::Test
     assert_equal(false, @customer6.can_afford_entry?(@room1))
   end
 
+  def test_fave_song_is_on_playlist__true
+    @room1.add_song(@song1)
+    @room1.add_song(@song2)
+    @room1.add_song(@song3)
+    @room1.add_song(@song4)
+    assert_equal("Yay! My favourite song Woodpile is on here!", @customer4.fave_song_on_playlist(@room1))
+  end
 
+  def test_fave_song_is_on_playlist__false
+    @room1.add_song(@song1)
+    @room1.add_song(@song2)
+    @room1.add_song(@song3)
+    @room1.add_song(@song4)
+    assert_equal("Oh rats! My favourite song Back for Good isn't on this list!", @customer5.fave_song_on_playlist(@room1))
+  end
 end
