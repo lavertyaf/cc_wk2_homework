@@ -62,7 +62,7 @@ class RoomTest < MiniTest::Test
     assert_equal(2, @room2.max)
   end
 
-  def test_room_has_max_time_limit
+  def test_playlist_has_exceeded_time_limit__true
   @room1.add_song(@song1)
   @room1.add_song(@song2)
   @room1.add_song(@song3)
@@ -71,7 +71,13 @@ class RoomTest < MiniTest::Test
   @room1.add_song(@song4)
   @room1.add_song(@song5)
   assert_equal(true, @room1.has_exceeded_time_limit?)
+  end
 
+  def playlist_has_exceeded_time_limit__false
+    @room1.add_song(@song1)
+    @room1.add_song(@song4)
+    @room1.add_song(@song5)
+    assert_equal(false, @room1.has_exceeded_time_limit?)
   end
 
 end

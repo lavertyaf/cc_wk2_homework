@@ -28,10 +28,12 @@ class Room
     @guestlist.delete(customer)
   end
 
-  def has_exceeded_time_limit
-    # add the time of each song in the array
-    # if time is greater than time limit return true
-
+  def has_exceeded_time_limit?
+    for song in playlist
+      if song.run_time > @limit
+      end
+      return true
+    end
   end
 
 end
